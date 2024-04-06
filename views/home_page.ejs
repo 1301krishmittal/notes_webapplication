@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KM</title>
+    <style>
+        /* Style for the body */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: rgb(25, 29, 28);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Style for the heading */
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: text-animation 3s ease-in-out infinite alternate;
+            color: antiquewhite;
+            text-shadow: 0 0 5px rgba(201, 192, 192, 0.3);
+            /* Add text shadow */
+        }
+
+        /* Animation for the heading */
+        @keyframes text-animation {
+            from {
+                color: #c9c6c6;
+            }
+
+            to {
+                color: #f7e1e1;
+            }
+        }
+
+        /* Style for the buttons container */
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        /* Style for the buttons */
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.2s ease;
+            color: #333;
+            /* Default button text color */
+        }
+
+        /* Style for the login button */
+        #loginBtn {
+            background-color: #3498db;
+        }
+
+        #loginBtn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Style for the signup button */
+        #signupBtn {
+            background-color: #e74c3c;
+        }
+
+        .typed-cursor {
+            opacity: 0;
+        }
+
+        #signupBtn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Style for the switch button */
+        .theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .theme-switch input[type="checkbox"] {
+            display: none;
+        }
+
+        .theme-switch .slider {
+            position: relative;
+            cursor: pointer;
+            width: 40px;
+            height: 20px;
+            border-radius: 10px;
+            background: #ccc;
+            transition: .4s;
+        }
+
+        .theme-switch .slider .inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            border-radius: 10px;
+            background: white;
+            transition: .4s;
+        }
+
+        .theme-switch input:checked+.slider .inner {
+            left: calc(100% - 50%);
+            background: #3498db;
+        }
+
+        /* Toggle button functionality (add this part) */
+        body.light {
+            background-color: #f5f5f5;
+            color: #333;
+            /* Adjust text color for light theme */
+        }
+
+        .buttons-container button {
+            color: inherit;
+            /* Inherit text color from body */
+        }
+
+        /* Media query for small screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .theme-switch {
+                top: 10px;
+            }
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #c9c6c6;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+
+<body>
+    <h1 id="textarea">Home page,
+        Please login or sign up</h1>
+    <div class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="slider">
+            <span class="inner"></span>
+        </label>
+    </div>
+
+    <div class="buttons-container">
+        <form action="loginbtn" method="post"><button id="loginBtn">LOGIN</button></form>
+        <form action="signupbtn" method="post"><button id="signupBtn">SIGN UP</button></form>
+    </div>
+    <div class="footer">
+        <p>Designed and developed by Krish mittal</p>
+    </div>
+</body>
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script src="style.js"></script>
+<script>
+    var typed = new Typed('#textarea', {
+        strings: ['want To get notes ? ', 'Login or SignUP'],
+        typeSpeed: 80,
+    });
+</script>
+
+</html>

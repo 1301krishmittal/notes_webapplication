@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KM</title>
+    <style>
+        /* Dark theme styles */
+        body {
+            background-color: #212529;
+            color: #fff;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        p {
+            align-items: center;
+            display: flex;
+
+        }
+
+        button {
+            margin: auto;
+            margin-top: 40px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        button:disabled {
+            background-color: #a5a5a5;
+            cursor: default;
+            /* Change cursor to indicate disabled state */
+        }
+
+        h2 {
+            text-align: center;
+            margin-left: 170px;
+            margin-right: 170px;
+            margin-top: 200px;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #c9c6c6;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>
+        Email Not verified. You are signed in as <%= email %>. Click below for sending verification email again.
+    </h2>
+    <p>
+        <button onclick="disableButton(); sendVerificationEmail()">Send verification email</button>
+    </p>
+    <p>
+        <button onclick="signout()">SignOut</button>
+    </p>
+    <div class="footer">
+        <p>Designed and developed by Krish mittal</p>
+    </div>
+
+    <script>
+        function disableButton() {
+            // Simulate sending email (replace with actual logic)
+            alert("Verification email sent!");
+
+            // Disable the button after click
+            document.querySelector("button").disabled = true;
+        }
+        function sendVerificationEmail() {
+            fetch('/verifyemail', {
+                method: 'GET'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Succeesful");
+                    }
+                    else {
+                        console.log("An error occurred during sign-out.");
+                    }
+                })
+                .catch(error => {
+                    console.error("An error occurred:", error);
+                });
+        }
+        function signout() {
+            // Make an AJAX request to the '/signout' endpoint
+            fetch('/signout', {
+                method: 'GET' // Assuming your '/signout' endpoint accepts GET requests
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Sign-out successful.");
+                        // Optionally, redirect the user to another page
+                        window.location.href = '/home_page';
+                    } else {
+                        console.log("An error occurred during sign-out.");
+                    }
+                })
+                .catch(error => {
+                    console.error("An error occurred:", error);
+                });
+        }
+    </script>
+</body>
+
+</html>
